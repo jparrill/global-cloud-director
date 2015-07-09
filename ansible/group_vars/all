@@ -1,0 +1,7 @@
+pacemaker_repo: file:///vagrant/rpms
+cluster_node_1: 'pcs01'
+cluster_node_2: 'pcs02'
+cluster_node_3: 'pcs03'
+cluster_name: 'hacluster'
+cluster_pass_cyph: '$1$K3KBsdy3$OXKHFPU2uSO.zRt7DQSLq.'
+cluster_pass: 'Eeleik4yie9Uyi6y'

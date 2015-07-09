@@ -1,0 +1,6 @@
+---
+-   name: Pacemaker Initiator
+    hosts: vagrant
+    sudo: yes
+    roles:
+        - role: pacemaker_initiator

@@ -1,0 +1,4 @@
+pcs01 ansible_ssh_user=vagrant
+
+[vagrant]
+pcs01

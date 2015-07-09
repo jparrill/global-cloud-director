@@ -1,0 +1,3 @@
+---
+- include: 01_subscription-manager.yml
+- include: 02_pcs-config.yml

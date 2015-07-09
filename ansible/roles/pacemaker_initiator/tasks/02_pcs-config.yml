@@ -1,0 +1,8 @@
+---
+  ## This function will add all nodes from group['name'] to hosts file
+  ## into the guest clients, change ansible_default_ipv4 for the needed inteface
+  ## ansible_eth1.ipv4.address
+  - name: Build hosts file
+    lineinfile: dest=/etc/hosts regexp='.*{{ item }}$' line="{{ hostvars[item].ansible_default_ipv4.address }} {{ hostvars[item]['ansible_hostname'] }} {{item}}" state=present
+    when: hostvars[item].ansible_default_ipv4.address is defined
+    with_items: groups['vagrant']

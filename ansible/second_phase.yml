@@ -1,0 +1,6 @@
+---
+-   name: Cluster formation
+    hosts: vagrant
+    sudo: yes
+    roles:
+        - role: cluster formation

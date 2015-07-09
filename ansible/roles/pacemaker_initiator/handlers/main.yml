@@ -1,0 +1,15 @@
+---
+- name: clean packages
+  shell: /usr/bin/yum clean all
+
+- name: firewall-reload
+  shell: firewall-cmd --reload
+
+- name: Change hacluster pass
+  shell: passwd
+
+- name: Manage Service pcsd
+  service: name=pcsd state=started enabled=yes
+
+- name: Manage Service firewalld
+  service: name=firewalld state=started enabled=yes

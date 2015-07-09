@@ -1,0 +1,12 @@
+## Puppet Modules packages
+*.tar.gz
+*.rpm
+rpms/
+pkg/
+
+## Hypervisor hdds
+*.vdi
+*.vmdk
+
+## Vagrant stuff
+.vagrant/
