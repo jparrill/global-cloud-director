@@ -1,4 +1,8 @@
-pcs01 ansible_ssh_user=vagrant
+pcs01 ansible_ssh_user=vagrant ansible_ssh_private_key_file=/home/jparrill/Dropbox/RedHat/RedHat_Consulting/Produban/repos/produban-puppet-modules/.vagrant/machines/pcs01/virtualbox/private_key
+pcs02 ansible_ssh_user=vagrant ansible_ssh_private_key_file=/home/jparrill/Dropbox/RedHat/RedHat_Consulting/Produban/repos/produban-puppet-modules/.vagrant/machines/pcs02/virtualbox/private_key
+pcs03 ansible_ssh_user=vagrant ansible_ssh_private_key_file=/home/jparrill/Dropbox/RedHat/RedHat_Consulting/Produban/repos/produban-puppet-modules/.vagrant/machines/pcs03/virtualbox/private_key
 
 [vagrant]
 pcs01
+pcs02
+pcs03

@@ -44,8 +44,11 @@ Vagrant.configure(2) do |config|
       end
     end
   end
+end
+
+Vagrant.configure(2) do |cluster|
   ENVIRONMENT.each do |name, details|
-    config.vm.define name do |node|
+    cluster.vm.define name do |node|
       node.vm.provision "ansible" do |ansible|
           ansible.playbook = "ansible/second_phase.yml"
           ansible.limit = "vagrant"

@@ -3,4 +3,4 @@
     hosts: vagrant
     sudo: yes
     roles:
-        - role: cluster formation
+        - role: cluster_formation
