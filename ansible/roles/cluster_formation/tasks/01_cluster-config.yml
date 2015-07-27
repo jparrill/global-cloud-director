@@ -11,3 +11,19 @@
       - Cluster Service Start
 
   - meta: flush_handlers
+
+  #- name: Config Stonith Fencing
+  #  command: >
+  #    pcs stonith create fence-"{{ item.node }}" fence_vmware_soap
+  #    ipaddr="{{ VCENTER }}"
+  #    ssl=1 ssl_insecure=1
+  #    login="{{ VC_USER }}"
+  #    passwd="{{ IAAS_PASS }}"
+  #    action='reboot'
+  #    port="{{ item.node_uuid }}"
+  #    pcmk_host_list="{{ item.node }}"
+  #  with_items:
+  #    - { node: "{{ cluster_node_1 }}", node_uuid: "{{ cluster_node_1_uuid }}" }
+  #    - { node: "{{ cluster_node_2 }}", node_uuid: "{{ cluster_node_2_uuid }}" }
+  #    - { node: "{{ cluster_node_3 }}", node_uuid: "{{ cluster_node_3_uuid }}" }
+  #  run_once: true

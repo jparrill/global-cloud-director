@@ -1,4 +1,7 @@
 pacemaker_repo: file:///vagrant/rpms
+vcenter: 'vcenter.intranet.company'
+vc_user: 'user'
+iaas_pass: 'password'
 cluster_node_1: 'pcs01'
 cluster_node_2: 'pcs02'
 cluster_node_3: 'pcs03'

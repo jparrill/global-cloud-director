@@ -4,7 +4,8 @@
     command: rm -f /etc/yum.repos.d/*.repo
 
   - name: Pacemaker Local Repo
-    template: src=repository.j2
+    template: >
+              src=repository.j2
               dest=/etc/yum.repos.d/{{ item.name }}.repo
               owner=root
               group=root

@@ -1,2 +1,2 @@
 ---
-- include: 01_subscription-manager.yml
+- include: 01_pacemaker-initiator.yml
