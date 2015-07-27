@@ -1,6 +1,6 @@
 ## Scoping Automation Project
 #### Repository
- http://github.lvtc.gsnet.corp:8080/gitbucket/OpenStack/global-cloud-bash
+  - https://github.com/padajuan/global-cloud-director
 #### Finally
 Deploy a new infrastructure of OSP with Jenkins + Ansible + Puppet and manage it with Puppet
 #### Alternatives:
