@@ -13,3 +13,9 @@
 
 - name: Manage Service firewalld
   service: name=firewalld state=started enabled=yes
+
+- name: Cluster Service Enable
+  command: pcs cluster enable --all
+
+- name: Cluster Service Start
+  command: pcs cluster start --all

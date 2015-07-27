@@ -1,4 +1,13 @@
 ---
   ## Auth cluster nodes into PCS
   - name: PCS Auth
-    command: pcs cluster auth {{cluster_node_1}} {{cluster_node_2}} {{cluster_node_3}} -u hacluster -p {{cluster_pass}} --force
+    command: pcs cluster auth {{ cluster_node_1 }} {{ cluster_node_2 }} {{ cluster_node_3 }} -u hacluster -p {{ cluster_pass }} --force
+
+  - name: PCS Setup
+    command: pcs cluster setup --name {{ cluster_name }} {{ cluster_node_1 }} {{ cluster_node_2 }} {{ cluster_node_3 }} --force
+    when: inventory_hostname_short == "{{ cluster_node_1 }}"
+    notify:
+      - Cluster Service Enable
+      - Cluster Service Start
+
+  - meta: flush_handlers

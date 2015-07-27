@@ -27,12 +27,6 @@ Vagrant.configure(2) do |config|
         vb.customize ['modifyvm', :id, '--memory', details['memory']]
         vb.customize ['modifyvm', :id, '--cpus', details['cpus']]
       end
-      node.vm.provision "ansible" do |ansible|
-          ansible.playbook = "ansible/first_phase.yml"
-          ansible.limit = "vagrant"
-          ansible.inventory_path = "ansible/inventory/hosts"
-          #ansible.verbose = "vvv"
-      end
       if details.has_key?('storage')
         node.vm.provider 'virtualbox' do |vb|
           unless File.exist?("#{name}.vdi")
@@ -46,15 +40,11 @@ Vagrant.configure(2) do |config|
   end
 end
 
-Vagrant.configure(2) do |cluster|
-  ENVIRONMENT.each do |name, details|
-    cluster.vm.define name do |node|
-      node.vm.provision "ansible" do |ansible|
-          ansible.playbook = "ansible/second_phase.yml"
-          ansible.limit = "vagrant"
-          ansible.inventory_path = "ansible/inventory/hosts"
-          #ansible.verbose = "vvv"
-      end
-    end
-  end
-end
+#Vagrant.configure(2) do |base|
+#  base.vm.provision "ansible" do |ansible|
+#    ansible.playbook = "ansible/first_phase.yml"
+#    ansible.limit = "vagrant"
+#    ansible.inventory_path = "ansible/inventory/hosts"
+    #ansible.verbose = "vvv"
+#  end
+#end

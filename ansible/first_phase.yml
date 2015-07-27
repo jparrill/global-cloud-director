@@ -4,3 +4,4 @@
     sudo: yes
     roles:
         - role: pacemaker_initiator
+        - role: cluster_formation
