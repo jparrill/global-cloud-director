@@ -13,6 +13,8 @@
 
   - meta: flush_handlers
 
+  ## Added dummy command to get UUID from vcenter and use it into real environment
+  # Just change the shell command to consume it
   - name: Get Nodes UUID
     shell: echo "{{ item }}" | sha1sum | awk '{print $1}'
     register: UUIDs
