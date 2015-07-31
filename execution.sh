@@ -1,6 +1,6 @@
 #!/bin/bash
 function def() {
-  BASE=/home/jparrill/RedHat_Consulting/Produban/repos/produban-puppet-modules
+  BASE=/home/jparrill/RedHat_Consulting/Produban/repos/global-cloud-director
   KEY=/home/jparrill/.vagrant.d/insecure_private_key
   PLAYBOOK=${BASE}/ansible/first_phase.yml
   INVENTORY=${BASE}/ansible/inventory/hosts
