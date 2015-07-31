@@ -2,6 +2,7 @@
   ## Auth cluster nodes into PCS
   - name: PCS Auth
     command: pcs cluster auth {{ cluster_node_1 }} {{ cluster_node_2 }} {{ cluster_node_3 }} -u hacluster -p {{ cluster_pass }} --force
+    run_once: yes
 
   - name: PCS Setup
     command: pcs cluster setup --name {{ cluster_name }} {{ cluster_node_1 }} {{ cluster_node_2 }} {{ cluster_node_3 }} --force
@@ -11,6 +12,25 @@
       - Cluster Service Start
 
   - meta: flush_handlers
+
+  - name: Get Nodes UUID
+    shell: echo "{{ item }}" | sha1sum | awk '{print $1}'
+    register: UUIDs
+    #command: fence_vmware_soap -a "{{ vcenter }}" -l "{{ vc_user }}" -p "{{ iaas_pass }}" --ssl-insecure -z -o list | grep "{{ item }}" | awk -F, '{print $2}'
+    when: inventory_hostname_short == "{{ cluster_node_1 }}"
+    with_items:
+      - "{{ cluster_node_1 }}"
+      - "{{ cluster_node_2 }}"
+      - "{{ cluster_node_3 }}"
+
+  - debug: var="UUIDs"
+
+  - debug: msg="System {{ item.node }} has uuid {{ item.uuid }}"
+    when: inventory_hostname_short == "{{ cluster_node_1 }}"
+    with_items:
+      - { node: "{{ cluster_node_1 }}", uuid: "{{ UUIDs.results[0].stdout }}" }
+      - { node: "{{ cluster_node_2 }}", uuid: "{{ UUIDs.results[1].stdout }}" }
+      - { node: "{{ cluster_node_3 }}", uuid: "{{ UUIDs.results[2].stdout }}" }
 
   #- name: Config Stonith Fencing
   #  command: >

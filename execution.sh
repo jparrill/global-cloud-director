@@ -6,10 +6,25 @@ function def() {
   INVENTORY=${BASE}/ansible/inventory/hosts
 }
 
+function ansible() {
+  ANSIBLE_HOST_KEY_CHECKING=false ansible-playbook --private-key=${KEY}  --user=vagrant --limit=vagrant --inventory-file=${INVENTORY} ${PLAYBOOK}
+}
+
+
 function main() {
   def
-  vagrant destroy -f && vagrant up --no-provision
-  ANSIBLE_HOST_KEY_CHECKING=false ansible-playbook --private-key=${KEY}  --user=vagrant --limit=vagrant --inventory-file=${INVENTORY} ${PLAYBOOK}
+  if [[ -z "$(vagrant status | grep not)" ]];then
+  {
+    echo "VM's running...executing provision"
+    ansible
+  }
+  else
+  {
+    echo "VM's not running...waking up"
+    vagrant destroy -f && vagrant up --no-provision
+    ansible
+  }
+  fi
 }
 
 main
