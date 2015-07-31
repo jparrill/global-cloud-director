@@ -24,6 +24,7 @@
       - "{{ cluster_node_3 }}"
 
   - debug: var="UUIDs"
+    when: inventory_hostname_short == "{{ cluster_node_1 }}"
 
   - debug: msg="System {{ item.node }} has uuid {{ item.uuid }}"
     when: inventory_hostname_short == "{{ cluster_node_1 }}"
